@@ -18,8 +18,18 @@ elixir -e Hello.hello
 elixir hello.exs 
 ```
 
+## nim
+```
+#コンパイル
+nim c hello.nim
+
+#実行
+./hello
+```
+
 # links
 - [gitignore.io](https://www.toptal.com/developers/gitignore)
 - [Elixir入門 11: プロセス](https://dev.to/gumi/elixir-11--2mia)
 - [Elixir School](https://elixirschool.com/ja)
 - [Elixir神ライブラリ](https://github.com/piacerex/communitex)
+- [nim](https://nim-lang.org/)
