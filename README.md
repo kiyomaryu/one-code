@@ -27,6 +27,8 @@ nim c hello.nim
 ./hello
 ```
 
+## ruby
+
 # links
 - [gitignore.io](https://www.toptal.com/developers/gitignore)
 - [Elixir入門 11: プロセス](https://dev.to/gumi/elixir-11--2mia)
