@@ -10,24 +10,28 @@ node hello.js
 ## elixir
 ```
 # コンパイル
-elixirc hello.ex 
+docker run -it --rm --name elixir-container -v "$PWD":/usr/src/myapp -w /usr/src/myapp elixir elixirc hello.ex
 # 実行
-elixir -e Hello.hello
+docker run -it --rm --name elixir-container -v "$PWD":/usr/src/myapp -w /usr/src/myapp elixir elixir -e Hello.hello
 
 # スクリプトとして実行
-elixir hello.exs 
+docker run -it --rm --name elixir-container -v "$PWD":/usr/src/myapp -w /usr/src/myapp elixir elixir hello.exs
 ```
 
 ## nim
 ```
 #コンパイル
-nim c hello.nim
-
+docker run --rm --name nim-container -v `pwd`:/usr/src/app -w /usr/src/app nimlang/nim nim c -r hello.nim
 #実行
-./hello
+docker run --rm --name nim-container -v `pwd`:/usr/src/app -w /usr/src/app nimlang/nim ./hello
 ```
 
 ## ruby
+```
+# 実行
+docker run -it --rm --name ruby-container -v "$PWD":/usr/src/myapp -w /usr/src/myapp ruby:3.1 ruby hello.rb
+```
+
 
 # links
 - [gitignore.io](https://www.toptal.com/developers/gitignore)
