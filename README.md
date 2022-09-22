@@ -34,7 +34,16 @@ docker run -it --rm --name ruby-container -v "$PWD":/usr/src/myapp -w /usr/src/m
 
 ## kotlin
 ```
-# ktor turorial
+# install jar
+./gradlew :buildFatJar
+# container build & run
+docker compose --project-directory ./ build
+docker compose --project-directory ./ up -d
+# コマンド実行してアクセス
+$ curl http://localhost:8080
+Hello World!
+
+## ref:ktor turorial
 # https://github.com/ktorio/ktor-documentation/tree/2.1.1/codeSnippets/snippets/tutorial-website-interactive-docker-compose
 git clone git@github.com:ktorio/ktor-documentation.git
 cd ktor-documentation/codeSnippets
