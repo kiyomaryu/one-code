@@ -32,6 +32,17 @@ docker run --rm --name nim-container -v `pwd`:/usr/src/app -w /usr/src/app nimla
 docker run -it --rm --name ruby-container -v "$PWD":/usr/src/myapp -w /usr/src/myapp ruby:3.1 ruby hello.rb
 ```
 
+## kotlin
+```
+# ktor turorial
+# https://github.com/ktorio/ktor-documentation/tree/2.1.1/codeSnippets/snippets/tutorial-website-interactive-docker-compose
+git clone git@github.com:ktorio/ktor-documentation.git
+cd ktor-documentation/codeSnippets
+# install libs
+./gradlew :tutorial-website-interactive-docker-compose:buildFatJar
+# container up
+docker compose --project-directory snippets/tutorial-website-interactive-docker-compose up
+```
 
 # links
 - [gitignore.io](https://www.toptal.com/developers/gitignore)
