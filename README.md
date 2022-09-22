@@ -32,7 +32,7 @@ docker run --rm --name nim-container -v `pwd`:/usr/src/app -w /usr/src/app nimla
 docker run -it --rm --name ruby-container -v "$PWD":/usr/src/myapp -w /usr/src/myapp ruby:3.1 ruby hello.rb
 ```
 
-## kotlin
+## kotlin/ktor
 ```
 # generate project
 https://start.ktor.io/
