@@ -34,7 +34,13 @@ docker run -it --rm --name ruby-container -v "$PWD":/usr/src/myapp -w /usr/src/m
 
 ## kotlin
 ```
+# generate project
+https://start.ktor.io/
+
+# 動かす環境にダウンロードされたzipファイル(projetctの一式)をコピー
+
 # install jar
+chmod 755 ./gradlew
 ./gradlew :buildFatJar
 # container build & run
 docker compose --project-directory ./ build
