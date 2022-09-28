@@ -58,10 +58,10 @@ cd ktor-documentation/codeSnippets
 # container up
 docker compose --project-directory snippets/tutorial-website-interactive-docker-compose up
 ```
-
 ## golang
 ```
-
+# 実行(コンテナ使って実行)
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.19 go build hello.go
 ```
 
 # links
