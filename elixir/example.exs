@@ -74,7 +74,6 @@ end
 # 時間かかるので現時点ではコメントアウトしておく
 #_result = Parallel.pmap 1..10000, &(&1 * &1)
 
-
 # Enumの活用。各要素に対して関数を適用している。これは各要素の文字列の長さを判定している
 IO.puts Enum.all?(["foo", "bar", "hello"], fn(s) -> String.length(s) == 3 end)
 IO.puts Enum.all?(["foo", "bar", "hello"], fn(s) -> String.length(s) > 1 end)
@@ -109,6 +108,7 @@ with {:ok, first} <- Map.fetch(user, :first),
 
 sum = fn (a,b) -> (a + b) end
 IO.puts sum.(2,3)
+
 
 
 
@@ -164,7 +164,7 @@ keywordlist = [foo: "bar", hello: "world"]
 keywordlist2 = [{:foo, "bar"}, {:hello, "world"}]
 IO.puts keywordlist[:foo]
 
-## マップ(キーワードリストとは違ってどんな型のキーも使え、順序付けされません。マップは %{} 構文で定義することができます:　★ポイント
+## マップ(キーワードリストとは違ってどんな型のキーも使え、順序付けされません。マップは %{} 構文で定義することができます
 map = %{:foo => "bar", "hello" => :world}
 map[:foo]
 ## キーがアトムのときはこれでもアクセスできる
@@ -176,7 +176,7 @@ hello_world_map = %{key => "world"}
 IO.puts hello_world_map[key]
 IO.puts hello_world_map["hello"] # keyは"hello"とバインドされているので、バインドされている文字列でもkeyのvalueを引くことができる
 ## 同じキーがmapに追加された場合は後勝ち
-%{:foo => "bar", :foo => "hello world"}
+#%{:foo => "bar", :foo => "hello world"}
 ## アトムのキーだけを含んだマップには特別な構文
 %{foo: "bar", hello: "world"} == %{:foo => "bar", :hello => "world"} # これがなんとtrueになる
 ## 特殊な動き
@@ -188,13 +188,13 @@ defmodule Example.User do
   defstruct name: "kiyomaru", roles: []
 end
 
-struct_1 = %Example.User{}
-struct_2 = %Example.User{name: "Steve"}
-struct_3 = %Example.User{name: "Steve", roles: [:manager]}
+#struct_1 = %Example.User{}
+#struct_2 = %Example.User{name: "Steve"}
+#struct_3 = %Example.User{name: "Steve", roles: [:manager]}
 
-steve = %Example.User{name: "Steve"}
-sean = %{steve | name: "Sean"} # マップみたいに同じキーがある場合は更新(新しいマップを生成)することができる
+#steve = %Example.User{name: "Steve"}
+#sean = %{steve | name: "Sean"} # マップみたいに同じキーがある場合は更新(新しいマップを生成)することができる
 ## もちろん構造体はmapにマッチできる。
-%{name: "Sean"} = sean
+#%{name: "Sean"} = sean
 
-
+IO.puts()
