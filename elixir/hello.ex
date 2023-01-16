@@ -3,3 +3,4 @@ defmodule Hello do
     IO.puts "Hello World."
   end
 end
+Hello.hello()
