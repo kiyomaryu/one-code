@@ -187,7 +187,7 @@ map = %{foo: "bar", hello: "world"}
 defmodule Example.User do
   defstruct name: "Sean", roles: []
 
-  def new do
+  def new do # https://elixirforum.com/t/defstruct-diffrenet-behaviors-in-iex-and-elixir/7801/7
     %Example.User{} # ファイルにする場合はコンパイラの処理の順番の影響で構造体を定義していても下記の%Example.User{}時に構造体無いよって怒られる。なのでここでは明示的にモジュール定義してこの中で構造体を返す用にする
   end
 end
