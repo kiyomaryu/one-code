@@ -1,38 +1,39 @@
 # Exlir Schoolなどのサンプル置き場です
-# https://elixirschool.com/ja/lessons/basics/basics/
+# https://elixirschool.com/ja/lessons/basics/basicst/
 
 # 文字列を結合して表示
 IO.puts "hello" <> " " <> "world"
 
 # 変数との束縛を色々実験中
-num_1 = 10 / 2
-f = fn -> num_1 end
-num_1 = 23 # これは再代入じゃなくて再束縛.再束縛したくなくてパターンマッチしたいときはピン演算子^を変数名につけてマッチする
-IO.puts f.() #再束縛なのでf関数の戻り値自体はnum_1をはじめに束縛した方の変数を参照し続けている
-_num_2 = div(10,2) #使わない変数なので_つけてる
+num_1 = 10 / 2            # 割り算結果
+f = fn -> num_1 end       # 無名関数を変数fに束縛
+num_1 = 23                #  これは再代入じゃなくて再束縛.再束縛したくなくてパターンマッチしたいときはピン演算子^を変数名につけてマッチする
+IO.puts f.()              # 再束縛なので無名関数を束縛している変数fの戻り値は、はじめに束縛したnum_1変数を参照し続けている 5が表示
+_num_2 = div(10,2)        #使わない変数なので_つけてる
 _result = (1 + 2) * 3 - 4 #同上
 
 # 浮動小数
-float_1 = 3.14
-float_2 = 1.0e-10
+float_1 = 3.14            # 浮動小数点
+float_2 = 1.0e-10         # こんな表現もできる
 IO.puts float_1
 IO.puts float_2
 
-# atom(symbol)
-atom_near_symbol_1 = :foo
-IO.puts is_atom(atom_near_symbol_1)
-IO.puts is_boolean(atom_near_symbol_1)
-atom_near_symbol_2 = true
-IO.puts is_atom(atom_near_symbol_2) # 真理値のtrueとfalseはatomの:true :false
-IO.puts is_boolean(atom_near_symbol_2)
-IO.puts is_atom(MyApp.MyModule) # このようなモジュールは定義されてないけどこの名前自体はatom
 # アトムはrubyのシンボルと同じ
 # シンボルは内部的には数値として認識されるもの。人が読みやすいようにシンボルというラベルで表現されている
-atom = :kiyomaru
-IO.puts is_atom(atom)
-# アトム同士の比較
-# 同じアトムなのでTrueでかえってくる
-IO.puts :kiyomaru === :kiyomaru
+IO.puts "====atom===="
+atom_near_symbol_1 = :kiyomaru         # atom_near_symbol_1にアトム:kiyomaruを束縛
+IO.puts is_atom(atom_near_symbol_1)    # アトムかどうか判定(ture)
+IO.puts is_boolean(atom_near_symbol_1) # boolean判定は(false)
+atom_near_symbol_2 = true              # 真偽値のture or falseは実はアトムの:true :falseである
+IO.puts is_atom(atom_near_symbol_2)    # 上の理由からアトム判定をするとtrueになる
+IO.puts is_boolean(atom_near_symbol_2) # boolean判定もtrue
+atom_near_symbol_3 = false              # 真偽値のture or falseは実はアトムの:true :falseである
+IO.puts is_atom(atom_near_symbol_3)    # 上の理由からアトム判定をするとtrueになる
+IO.puts is_boolean(atom_near_symbol_3) # boolean判定もtrue
+IO.puts is_atom(MyApp.MyModule)        # 加えてモジュール名も実はアトム。モジュールは定義されてなくても名前がアトムなのでここではtrueになる
+atom_kiyomaru = :kiyomaru
+IO.puts is_atom(atom_kiyomaru)
+IO.puts atom_kiyomaru === :kiyomaru # アトム同士の比較結果はtrueとなる
 
 # 比較
 # Elixirの重要な特徴はどんな2つの型でも比べられるということで、これは特にソートにおいて有用です。ソートされる順序を覚える必要はありませんが、順序を気にするのは重要なことです
@@ -203,3 +204,16 @@ struct_3 = Example.User.struct3()
 sean = %{struct_2 | name: "Sean"} # マップみたいに同じキーがある場合は更新(新しいマップを生成)することができる
 ## もちろん構造体はmapにマッチできる。
 # %{name: "Sean"} = sean
+
+## playgroud
+unname_func = fn() -> "hoge" end
+IO.puts(unname_func.())
+
+# 関数
+defmodule Kiyomaru do
+  @greeting_word "Hello"
+  def greeting(name) do
+    "#{@greeting_word}" <> " #{name}" <> " san"
+  end
+end
+IO.puts(Kiyomaru.greeting("asagi"))
