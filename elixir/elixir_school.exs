@@ -185,16 +185,16 @@ map = %{foo: "bar", hello: "world"}
 
 # 構造体(構造体は定義済みのキーの一群とデフォルト値を持つ特殊なマップ)
 defmodule Example.User do
-  defstruct name: "kiyomaru", roles: []
+  defstruct name: "Sean", roles: []
+
+  def new do # https://elixirforum.com/t/defstruct-diffrenet-behaviors-in-iex-and-elixir/7801/7
+    %Example.User{} # ファイルにする場合はコンパイラの処理の順番の影響で構造体を定義していても下記の%Example.User{}時に構造体無いよって怒られる。なのでここでは明示的にモジュール定義してこの中で構造体を返す用にする
+  end
 end
-
-#struct_1 = %Example.User{}
-#struct_2 = %Example.User{name: "Steve"}
-#struct_3 = %Example.User{name: "Steve", roles: [:manager]}
-
-#steve = %Example.User{name: "Steve"}
-#sean = %{steve | name: "Sean"} # マップみたいに同じキーがある場合は更新(新しいマップを生成)することができる
+struct_1 = Example.User.new()
+# struct_2 = Example.User.new{name: "Steve"}
+# struct_3 = Example.User{name: "Steve", roles: [:manager]}
+# steve = %Example.User{name: "Steve"}
+# sean = %{steve | name: "Sean"} # マップみたいに同じキーがある場合は更新(新しいマップを生成)することができる
 ## もちろん構造体はmapにマッチできる。
-#%{name: "Sean"} = sean
-
-IO.puts()
+# %{name: "Sean"} = sean
