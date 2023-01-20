@@ -110,9 +110,6 @@ with {:ok, first} <- Map.fetch(user, :first),
 sum = fn (a,b) -> (a + b) end
 IO.puts sum.(2,3)
 
-
-
-
 # パイプ演算子
 check_result1 = "elixir" |> String.ends_with?("ixir")
 IO.puts check_result1
@@ -217,3 +214,4 @@ defmodule Kiyomaru do
   end
 end
 IO.puts(Kiyomaru.greeting("asagi"))
+
