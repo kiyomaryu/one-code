@@ -158,11 +158,12 @@ taple_result = File.read("path/to/unknown/file")
 keywordlist = [foo: "bar", hello: "world"]
 keywordlist2 = [{:foo, "bar"}, {:hello, "world"}]
 IO.puts keywordlist[:foo]
-map.foo ## キーがアトムのときはこれでもアクセスできる
 
 ## マップ(キーワードリストとは違ってどんな型のキーも使え、順序付けされません。マップは %{} 構文で定義することができます
 map = %{:foo => "bar", "hello" => :world}
 map[:foo]
+map.foo ## キーがアトムのときはこれでもアクセスできる
+
 # 構造体(構造体は定義済みのキーの一群とデフォルト値を持つ特殊なマップ) 実質はマップなのでここに書いとく
 defmodule Example.User do
   defstruct name: "Sean", roles: []
@@ -232,7 +233,7 @@ end
 #################################
 # 外部モジュールのインストール。mix deps.getに書いていてもスクリプト実行時には読み込まれないので内部でMix.installで無理やり入れてる
 # 本来はApplicationとして定義して外部モジュールを使えるようにするのが良いが、このコードではあくまでスクリプトなので無理やり実行時にインストールしてる
-Mix.install([{:httpoison, "~> 2.0"}])
+Mix.install([{:httpoison, "~> 2.0"}]) # mix run スクリプトファイル名 を指定するとmix
 # モジュール定義、実行
 defmodule Utils.CurlTest do
   def fetch do
@@ -240,4 +241,3 @@ defmodule Utils.CurlTest do
   end
 end
 IO.puts(Utils.CurlTest.fetch.())
-
