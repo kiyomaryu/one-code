@@ -39,5 +39,8 @@ mix deps.get
 
 ### 実行方法
 ```
+# elixirをローカルマシンにインストール済みの場合
 mix elixir_task_sample
+# コンテナ実行したい場合
+docker run -it --rm --name elixir-container -v "$PWD":/usr/src/myapp -w /usr/src/myapp elixir mix elixir_task_sample
 ```
