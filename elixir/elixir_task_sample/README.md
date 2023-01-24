@@ -10,7 +10,7 @@ mix taskとして定義するとちょっとしたコード書くときに便利
 mix new elixir_task_sample
 cd elixir_task_sample
 mkdir lib/mix/tasks
-touch elixir_task_sample.ex
+touch lib/mix/tasks/elixir_task_sample.ex
 ```
 
 #### elixir_task_sample.exの雛形
