@@ -11,7 +11,7 @@ mix taskとして定義するとちょっとしたコード書くときに便利
 ## 必須
 mix new elixir_task_sample
 cd elixir_task_sample
-mkdir lib/mix/tasks
+mkdir -p lib/mix/tasks
 touch lib/mix/tasks/elixir_task_sample.ex
 ```
 
@@ -22,7 +22,7 @@ touch lib/mix/tasks/elixir_task_sample.ex
 docker run -it --rm --name elixir-container -v "$PWD":/usr/src/myapp -w /usr/src/myapp elixir mix new elixir_task_sample
 sudo chown -R <ユーザ名>. ./elixir_task_sample
 cd elixir_task_sample
-mkdir lib/mix/tasks
+mkdir -p lib/mix/tasks
 touch lib/mix/tasks/elixir_task_sample.ex
 ```
 
