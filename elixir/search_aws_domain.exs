@@ -1,7 +1,9 @@
 # TODO: もっときれいにできるけど一旦はこれで。ここがS3だったりcloudfrontのcnameだったりroute53のホストゾーンとかになる
 defmodule Utils do
   def fetch_domain_name({search_word,profile}) do
-    System.cmd("bash", ["-c","aws s3 ls --profile=#{profile}| awk '{print $3}'"])
+    # System.cmd("bash", ["-c","/usr/local/bin/aws cloudfront list-distributions --profile #{profile} | jq '.DistributionList.Items[].Aliases.Items[]'"])
+    # System.cmd("bash", ["-c","/usr/local/bin/aws s3 ls --profile=#{profile}| awk '{print $3}'"])
+    System.cmd("bash", ["-c","/usr/local/bin/aws route53 list-hosted-zones-by-name --profile #{profile} | jq '.HostedZones[].Name'"])
     |> elem(0)
     |> String.split("\n")
     |> Enum.each(
@@ -18,8 +20,8 @@ end
 args = IO.gets "domain name: "
 search_word =  String.replace(args,"\n","")
 
-# TODO: 本当は~/.aws/credentialsからプロファイル名を取得するようにしたい
-profiles = ["default","default","default","default","default"]
+# ~/.aws/credentialsからプロファイル名を取得する
+profiles = System.cmd("bash",["-c", ~S(/bin/cat ~/.aws/credentials | grep "^\[" | sed "s/\[//" | sed "s/\]//")]) |> elem(0) |> String.split("\n")
 
 # ここで並行処理をして実行する。
 # プロファイル名のリストからAWSへの問い合わせをする関数をTaskが実行するために無名関数のリストとしてmapにする。
