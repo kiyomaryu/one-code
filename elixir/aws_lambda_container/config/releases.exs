@@ -1,3 +1,4 @@
+# TODO mix release時に呼ばれるconfig
 import Config
 
 config :ex_aws, :s3,

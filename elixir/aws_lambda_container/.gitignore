@@ -24,3 +24,7 @@ aws_lambda_container-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+_build
+deps
+mix.lock

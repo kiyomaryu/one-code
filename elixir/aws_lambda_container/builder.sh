@@ -22,10 +22,13 @@ docker stop elx
 # dockerファイルに環境変数を設定(ローカル実行用)
 cat <<EOF > ./_build/_aws/Dockerfile
 FROM amazon/aws-lambda-provided:al2.2021.07.05.11
+
 COPY docker/bootstrap /var/runtime/
+
 COPY docker/ /var/task/
 
 ENV AWS_ACCESS_KEY_ID=$1
+
 ENV AWS_SECRET_ACCESS_KEY=$2
 
 CMD [ "${MODULE_NAME}" ]
