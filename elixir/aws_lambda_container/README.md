@@ -1,6 +1,5 @@
 # AwsLambdaContainer
 
-//TODO 書き途中、メモ
 Lambda上でコンテナとしてElixirを実行するためのサンプルです。
 
 ## ローカルでコンテナのテストをする場合
